@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+This is a random quote machine project as part of freecodecamp frontend library certification.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Build a Random Quote Machine
+Objective: Build an app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/qRZeGZ.
 
-## Available Scripts
+https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-random-quote-machine
 
-In the project directory, you can run:
 
-### `npm start`
+Fulfill the below user stories and get all of the tests to pass. Use whichever libraries or APIs you need. Give it your own personal style.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You can use any mix of HTML, JavaScript, CSS, Bootstrap, SASS, React, Redux, and jQuery to complete this project. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+function App() { //1. How to set a useState in React
+  const [quote, setQuote] = useState("I have enjoyed with the right people")
+  const [author, setAuthor] = useState("Chima")
+  const [randomNumber, setRandomNumber] = useState(0)
 
-### `npm test`
+    2.
+  when you set a useState with const.
+  set const value as an arrow function. The set the setState on the arrow function curly braces () => { setState herewith} 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  Example
+   const generateRandomNumber = () => {
+    setRandomNumber(Math.random())
+  }
 
-### `npm run build`
+  const changeQuoteAndAuthor0 = () => {
+    setQuote("Life is not hard with love."); 
+    setAuthor("Genesis")
+  }
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  4. Return/render the const name as the onClick arroe function name. onclick= {()=>changeQuoteAndAuthor0()}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  return (
+    <div className="App">
+      <h1>Random Number: {randomNumber}</h1>
+      <button onClick={()=>setRandomNumber(Math.random())}>
+        Generate Random Number
+      </button>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+       <button onClick={()=> changeQuoteAndAuthor0()}>
+        Change Quote
+        </button>
