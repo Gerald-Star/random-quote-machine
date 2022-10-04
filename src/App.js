@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './App.scss';
-
+import COLORS_ARRAY from './colorsArray';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 //fetch url
 let quoteDBUrl = "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json"
@@ -12,7 +14,7 @@ function App() {
   const [author, setAuthor] = useState("Genesis")
   const [randomNumber, setRandomNumber] = useState(0)
   const [quotesArr, setquotesArr] = useState(null)
-
+  const [accentColor, setAccentColor] = useState('#282c34')
 
   //use useEffect arrow function to listen to any changes 
   const fetchQuotes = async (url) => {
@@ -30,6 +32,7 @@ function App() {
   const getRandomQuote = () => {
     let randomInteger = Math.floor(quotesArr.length * Math.random())
     setRandomNumber(randomInteger)
+    setAccentColor(COLORS_ARRAY[randomInteger])
     setQuote(quotesArr[randomInteger].quote)
     setAuthor(quotesArr[randomInteger].author)
  
@@ -91,22 +94,30 @@ function App() {
  
   return (
     <div className="App">
-      <div id="quote-box">
-        <h1>Random Quotes: {randomNumber}</h1>
-        {/* <button onClick={()=>generateRandomNumber()}>
-        Generate Random Quote
-        </button> */}
+      <header className='App-header' style={{backgroundColor: accentColor}}>
+        <div id="quote-box" style={{ color: accentColor}}>
+          <h1>Random Quotes: {randomNumber}</h1>
+        
 
-        <p id="text"> "{quote}"</p>
-        <p id="author"> - {author}</p>
+          <p id="text"> "{quote}"</p>
+          <p id="author"> - {author}</p>
     
-        <button id="new-quote" onClick={()=>getRandomQuote()}>
-        Generate Random Quotes</button>
+        
+          <div className='buttons'>
 
-        {/* This makes strings into click to open in twitter URLS */}
-        <a id="tweet-quote" href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote} -${author}`)}>Tweet Quotes</a>
-      </div>
+            {/* This makes strings into click to open in twitter URLS */}
+            <a id="tweet-quote" style={{backgroundColor: accentColor}} href=
+              {encodeURI(`http://www.twitter.com/intent/tweet?text=${quote} -${author}`)}>
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+          
+        
 
+            <button id="new-quote" style={{backgroundColor: accentColor}} onClick={()=>getRandomQuote()}>
+            Generate Random Quotes</button>
+          </div>
+        </div>
+      </header>
       
     </div>
   );
